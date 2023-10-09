@@ -1,7 +1,8 @@
 import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.nio.charset.MalformedInputException;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.ArrayList;
 
 class BaseLibro {
@@ -18,14 +19,17 @@ String url;
     }
 }
 
-public class leer_lbros {
+public class leer_libros {
 
     public static void main(String[] args) {
         if(args.length>0){
+            Instant inicio = Instant.now();
             System.out.println(args[0]);
             ArrayList<BaseLibro> base = ReadTextFiles(args[0]);
             processList(base);
-            System.out.println("Archivos Descargados");
+            Instant fin = Instant.now();
+            Duration dif = Duration.between(inicio,fin);
+            System.out.println("Archivos Descargados!  Tiempo:" + dif);
         }
         /*String URL = "https://www.gutenberg.org/cache/epub/40182/pg40182-images.html";
           String filename = "Oriente.html";
